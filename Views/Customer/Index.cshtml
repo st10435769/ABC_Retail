@@ -1,0 +1,64 @@
+﻿@model IEnumerable<WebApplication1.Models.CustomerEntity>
+
+
+<h1>Customers</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.RowKey</td>
+                <td>@customer.PartitionKey</td>
+                <td>@customer.Email</td>
+                <td>@customer.PhoneNumber</td>
+                <td>
+                    <!-- Edit Button -->
+                    @Html.ActionLink("Edit", "Edit", new { id = customer.RowKey }, new { @class = "btn btn-primary btn-sm action-link" }) |
+
+                    <!-- Details Button -->
+                    @Html.ActionLink("Details", "Details", new { id = customer.RowKey }, new { @class = "btn btn-info btn-sm action-link" }) |
+
+                    <!-- Delete Button (Form) -->
+                    @using (Html.BeginForm("Delete", "Customer", new { partitionKey = customer.PartitionKey, rowKey = customer.RowKey }, FormMethod.Post, new { @class = "d-inline" }))
+                    {
+                        <button type="submit" class="btn btn-danger btn-sm action-link">Delete</button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .action-link {
+        margin-right: 5px;
+    }
+
+    .btn-edit {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .btn-details {
+        background-color: #17a2b8;
+        color: white;
+    }
+
+    .btn-delete {
+        background-color: #dc3545;
+        color: white;
+    }
+</style>
+@using (Html.BeginForm("Create", "Customer", FormMethod.Get))
+{
+    <button type="submit" class="btn btn-primary">Add New Customer</button>
+}

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<string>
+
+<h2>Media Library</h2>
+
+<ul class="image-list">
+    @foreach (var fileName in Model)
+    {
+        <li class="image-item">
+            <a href="@Url.Action("ShowImage", "Images", new { fileName = fileName })">
+                <img src="@Url.Action("ShowImage", "Images", new { fileName = fileName })" alt="@fileName" />
+            </a>
+        </li>
+    }
+</ul>
+
+<style>
+    .image-list {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .image-item {
+        border: 1px solid #ccc;
+        padding: 5px;
+        box-sizing: border-box;
+        text-align: center; /* Center the content inside the item */
+    }
+
+        .image-item img {
+            display: block;
+            width: 50%; /* Adjust the size as needed */
+            height: auto;
+            margin: auto; /* Center the image horizontally */
+        }
+</style>

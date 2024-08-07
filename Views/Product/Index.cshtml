@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebApplication1.Models.ProductEntity>
+
+
+<h1>Products</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.RowKey</td>
+                <td>@product.PartitionKey</td>
+                <td>@product.Description</td>
+                <td>R @product.Price.ToString("F2")</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = product.RowKey }, new { @class = "btn btn-primary btn-sm action-link" }) |
+                    @Html.ActionLink("Details", "Details", new { id = product.RowKey }, new { @class = "btn btn-info btn-sm action-link" }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = product.RowKey }, new { @class = "btn btn-danger btn-sm action-link" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .action-link {
+        margin-right: 5px;
+    }
+
+    .btn-edit {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .btn-details {
+        background-color: #17a2b8;
+        color: white;
+    }
+
+    .btn-delete {
+        background-color: #dc3545;
+        color: white;
+    }
+</style>
+@using (Html.BeginForm("Create", "Product", FormMethod.Get))
+{
+    <button type="submit" class="btn btn-primary">Add New Product</button>
+}
