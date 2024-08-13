@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Process Order";
+}
+
+<h2>Process Order</h2>
+
+<p>@ViewBag.Message</p>
+
+<form action="@Url.Action("ProcessOrder", "Order")" method="post">
+    <label for="orderId">Order ID:</label>
+    <input type="text" id="orderId" name="orderId" required />
+    <button type="submit">Process Order</button>
+</form>
+
+<hr />
+
+<a href="@Url.Action("RetrieveOrderMessage", "Order")">Retrieve Order Message</a>
+
+
