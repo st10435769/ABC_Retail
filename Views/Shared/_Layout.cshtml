@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - ABC Retail</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
@@ -23,6 +23,8 @@
                     <li>@Html.ActionLink("Customers", "Index", "Customer", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Products", "Index", "Product", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Media", "Index", "Images", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("Orders", "Index", "Order", new { area = "" }, new { @class = "nav-link" })</li>
+                    <li>@Html.ActionLink("FileUploads", "Index", "File", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
             </div>
         </div>
